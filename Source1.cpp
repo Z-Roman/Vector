@@ -7,6 +7,21 @@ class Vector
 	int capacity = 10; // ёмкость (вместительность, запас памяти)
 	int* data; // указатель на динамический массив данных
 
+	void EnsureCapacity(int new_size)
+	{
+		if (capacity < new_size)
+		{
+			capacity = capacity / 2 + 1;
+			int* copy = new int[capacity];
+			for (int i = 0; i < size; i++)
+			{
+				copy[i] = data[i];
+				delete[] data;
+				data = copy;
+			}
+		}
+	}
+
 public:
 	Vector() : Vector(10)
 	{
@@ -30,9 +45,9 @@ public:
 		if (data != nullptr) delete[] data;
 	}
 
-	void SetCapacity(int value)
+	void SetCapacity(int capacity)
 	{
-		this->capacity = value;
+		this->capacity = capacity;
 	}
 
 	int GetSize()
