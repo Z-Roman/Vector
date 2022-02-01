@@ -30,6 +30,21 @@ public:
 		if (data != nullptr) delete[] data;
 	}
 
+	void SetCapacity(int value)
+	{
+		this->capacity = value;
+	}
+
+	int GetSize()
+	{
+		return size;
+	}
+
+	int GetCapacity()
+	{
+		return capacity;
+	}
+
 	void PushBack(int value)
 	{
 		// EnsureCapacity(size + 1); // проверка, хватит ли места для нового элемента - делайте сами ;)
