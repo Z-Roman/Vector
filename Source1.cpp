@@ -6,9 +6,9 @@ using namespace std;
 
 class Vector
 {
-	int size = 0; // êîëè÷åñòâî äåéñòâèòåëüíî ïðèñóòñòâóþùèõ ýëåìåíòîâ â êîíòåéíåðå
-	int capacity = 10; // ¸ìêîñòü (âìåñòèòåëüíîñòü, çàïàñ ïàìÿòè)
-	int* data; // óêàçàòåëü íà äèíàìè÷åñêèé ìàññèâ äàííûõ
+	int size = 0; // ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® Ã¤Ã¥Ã©Ã±Ã²Ã¢Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã® Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã¹Ã¨Ãµ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã®Ã¢ Ã¢ ÃªÃ®Ã­Ã²Ã¥Ã©Ã­Ã¥Ã°Ã¥
+	int capacity = 10; // Â¸Ã¬ÃªÃ®Ã±Ã²Ã¼ (Ã¢Ã¬Ã¥Ã±Ã²Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã®Ã±Ã²Ã¼, Ã§Ã Ã¯Ã Ã± Ã¯Ã Ã¬Ã¿Ã²Ã¨)
+	int* data; // Ã³ÃªÃ Ã§Ã Ã²Ã¥Ã«Ã¼ Ã­Ã  Ã¤Ã¨Ã­Ã Ã¬Ã¨Ã·Ã¥Ã±ÃªÃ¨Ã© Ã¬Ã Ã±Ã±Ã¨Ã¢ Ã¤Ã Ã­Ã­Ã»Ãµ
 
 public:
 	Vector() : Vector(10)
@@ -33,28 +33,10 @@ public:
 		if (data != nullptr) delete[] data;
 	}
 
-private:
-	void EnsureCapacity(int count)
-	{
-		if (capacity >= count) return;
-		int new_capacity = capacity * 3 / 2 + 1;
-		int* temp = new int[new_capacity];
 
-		for (int i = 0; i < capacity; i++)
-		{
-			temp[i] = data[i];
-		}
-		delete[] data;
-		data = temp;
-
-		capacity = new_capacity;
-		cout << "NEW CAP: " << capacity << "\n";
-	}
-
-public:
 	void PushBack(int value)
 	{
-		// EnsureCapacity(size + 1); // ïðîâåðêà, õâàòèò ëè ìåñòà äëÿ íîâîãî ýëåìåíòà - äåëàéòå ñàìè ;)
+		// EnsureCapacity(size + 1); // Ã¯Ã°Ã®Ã¢Ã¥Ã°ÃªÃ , ÃµÃ¢Ã Ã²Ã¨Ã² Ã«Ã¨ Ã¬Ã¥Ã±Ã²Ã  Ã¤Ã«Ã¿ Ã­Ã®Ã¢Ã®Ã£Ã® Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã  - Ã¤Ã¥Ã«Ã Ã©Ã²Ã¥ Ã±Ã Ã¬Ã¨ ;)
 		data[size++] = value;
 	}
 
@@ -71,7 +53,7 @@ public:
 
 	void Clear()
 	{
-		// îáíóëåíèå çíà÷åíèé ýëåìåíòîâ äåëàòü íåîáçÿòåëüíî
+		// Ã®Ã¡Ã­Ã³Ã«Ã¥Ã­Ã¨Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã®Ã¢ Ã¤Ã¥Ã«Ã Ã²Ã¼ Ã­Ã¥Ã®Ã¡Ã§Ã¿Ã²Ã¥Ã«Ã¼Ã­Ã®
 		// for (int i = 0; i < size; i++)
 		// {
 		//	 data[i] = 0;
@@ -164,7 +146,7 @@ public:
 
 	void  RandomFill()
 	{
-		//generate(data, data + size, rand() % 10);	// íå ïîëó÷àåòñÿ (	
+		//generate(data, data + size, rand() % 10);	// Ã­Ã¥ Ã¯Ã®Ã«Ã³Ã·Ã Ã¥Ã²Ã±Ã¿ (	
 		for (int i = 0; i < size; i++)
 		{
 			data[i] = (rand() % 10);
@@ -177,7 +159,7 @@ public:
 		return data[index];
 	}
 
-	Vector Clone(const Vector& clone) //ïåðåïîëíåíèå áóôåðà â data 
+	Vector Clone(const Vector& clone) //Ã¯Ã¥Ã°Ã¥Ã¯Ã®Ã«Ã­Ã¥Ã­Ã¨Ã¥ Ã¡Ã³Ã´Ã¥Ã°Ã  Ã¢ data 
 	{
 		size = clone.size;
 		capacity = clone.capacity;
@@ -214,7 +196,7 @@ public:
 		}
 		return is;
 	}
-	// îñòàëüíûå ìåòîäû îáÿçàòåëüíî ïîÿâÿòñÿ çäåñü ;)
+	// Ã®Ã±Ã²Ã Ã«Ã¼Ã­Ã»Ã¥ Ã¬Ã¥Ã²Ã®Ã¤Ã» Ã®Ã¡Ã¿Ã§Ã Ã²Ã¥Ã«Ã¼Ã­Ã® Ã¯Ã®Ã¿Ã¢Ã¿Ã²Ã±Ã¿ Ã§Ã¤Ã¥Ã±Ã¼ ;)
 };
 
 ostream& operator<<(ostream& os, Vector& original)
