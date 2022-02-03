@@ -63,6 +63,7 @@ public:
 	void PushBack(int value)
 	{
 		// EnsureCapacity(size + 1); // проверка, хватит ли места для нового элемента - делайте сами ;)
+		EnsureCapacity(size + 1);
 		data[size++] = value;
 	}
 
