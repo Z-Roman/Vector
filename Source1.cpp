@@ -69,7 +69,7 @@ public:
 
 	void PushFront(int value)
 	{
-		// EnsureCapacity(size + 1);
+		EnsureCapacity(size + 1);
 		for (int i = size; i > 0; i--)
 		{
 			data[i] = data[i - 1];
